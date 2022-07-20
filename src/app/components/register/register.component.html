@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="userForm" (ngSubmit)="createUser()">
+          <div class="mb-3">
+            <label for="emailForm" class="form-label"
+              >Correo</label
+            >
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [ngClass]="{'is-valid': '', 'is-invalid': userForm.get('email')?.hasError('required') && userForm.get('email')?.touched }"
+              id="emailForm"
+              placeholder="Email"
+            />
+           
+            <div class="invalid-feedback">
+              Por favor agrega un correo válido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="passwordForm" class="form-label"
+              >Contraseña</label
+            >
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              [ngClass]="{'is-valid': '', 'is-invalid': userForm.get('password')?.hasError('required') && userForm.get('password')?.touched}"
+              id="passwordForm"
+              placeholder="Password"
+            />
+            <div class="invalid-feedback">
+              Por favor agrega este campo.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="rolForm" class="form-label"
+              >Rol</label
+            >
+            <select 
+              formControlName="role"
+              class="form-select form-select-md mb-3" 
+              [ngClass]="{'is-valid': '', 'is-invalid': userForm.get('role')?.hasError('required') && userForm.get('role')?.touched}"
+              aria-label=".form-select-lg example">
+              <option value="" selected>Selecciona un rol</option>
+              <option value="user">Usuario</option>
+              <option value="admin">Administrador</option>
+            </select>
+            <div class="invalid-feedback">
+              Por favor selecciona un rol de la lista.
+            </div>
+    
+          </div>
+          <button [disabled]="userForm.invalid" class="btn btn-success">Registrar</button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
